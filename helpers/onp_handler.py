@@ -41,7 +41,7 @@ class ONPHandler:
         result = True
         prev_val = ""
         for i in phrase.split(' '):
-            if i not in self.digits or i not in self.operations.keys():
+            if not (i in self.digits or i in self.operations.keys()):
                 raise ONP_PHRASE_ERROR("Please make sure you are providing digits and operators only")
             if i in self.operations.keys() and prev_val in self.operations.keys():
                 raise ONP_PHRASE_ERROR("There is more than 1 operator in a row")
