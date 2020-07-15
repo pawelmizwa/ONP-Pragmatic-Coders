@@ -39,7 +39,7 @@ class Data(Resource):
             logger.warning(msg=e)
         except ONP_PHRASE_ERROR as e:
             response = make_response(
-                {"message": e}, 400
+                {"message": str(e)}, 400
             )
         except Exception as e:
             logger.critical(msg=e)

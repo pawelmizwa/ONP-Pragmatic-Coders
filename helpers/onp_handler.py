@@ -40,10 +40,21 @@ class ONPHandler:
     def validate_onp(self, phrase: str) -> bool:
         result = True
         prev_val = ""
+        digits = []
+        operators = []
         for i in phrase.split(' '):
             if not (i in self.digits or i in self.operations.keys()):
                 raise ONP_PHRASE_ERROR("Please make sure you are providing digits and operators only")
             if i in self.operations.keys() and prev_val in self.operations.keys():
                 raise ONP_PHRASE_ERROR("There is more than 1 operator in a row")
+            if i in self.digits:
+                digits.append(i)
+            if i in self.operations.keys():
+                operators.append(i)
+
+        if not digits:
+            raise ONP_PHRASE_ERROR("Please provide some digit")
+        if not operators:
+            raise ONP_PHRASE_ERROR("Please provide some operators")
 
         return result
