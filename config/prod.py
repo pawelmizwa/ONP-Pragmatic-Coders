@@ -6,7 +6,7 @@ operations = {
         '+': operator.add,
         '-': operator.sub,
         '*': operator.mul,
-        '/': operator.floordiv,
+        '/': operator.truediv,
     }
 local_user = "candidate"
 local_password = os.getenv("local_password", "change_me")
